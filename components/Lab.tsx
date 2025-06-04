@@ -1,7 +1,12 @@
 'use client';
 import { useState } from 'react';
 
-export function Lab({ template, onComplete }: { template: any; onComplete: () => void }) {
+interface LabTemplate {
+  starter?: string;
+  language?: string;
+}
+
+export function Lab({ template, onComplete }: { template: LabTemplate; onComplete: () => void }) {
   const [output, setOutput] = useState('');
   const [code, setCode] = useState(template?.starter || '');
 
@@ -13,8 +18,9 @@ export function Lab({ template, onComplete }: { template: any; onComplete: () =>
         db.run(code);
         // TODO: run tests
         onComplete();
-      } catch (e: any) {
-        setOutput(e.message);
+      } catch (e: unknown) {
+        const err = e as Error;
+        setOutput(err.message);
       }
     } else {
       setOutput('Python labs coming soon');
