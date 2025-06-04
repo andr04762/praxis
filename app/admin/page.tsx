@@ -9,7 +9,7 @@ export default async function AdminPage() {
     prisma.progress.findMany(),
   ]);
   const mau = await prisma.session.count({ where: { expires: { gte: new Date(Date.now() - 30*24*3600*1000) } } });
-  const conversions = progress.filter(p => p.xpEarned > 0).length / progress.length || 0;
+  const conversions = progress.filter((p: { xpEarned: number }) => p.xpEarned > 0).length / progress.length || 0;
 
   return (
     <div>

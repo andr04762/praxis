@@ -11,4 +11,9 @@ declare module 'next-auth' {
       image?: string | null;
     };
   }
+  interface User {
+    id: string;
+    role: string;
+    subscribed: boolean;
+  }
 }

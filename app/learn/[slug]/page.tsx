@@ -4,10 +4,10 @@ import { AskAI } from '@/components/AskAI';
 import { Lab } from '@/components/Lab';
 import { redirect } from 'next/navigation';
 import { getSession } from '@/lib/auth';
-
-export default async function LearnPage({ params }: { params: { slug: string } }) {
+export default async function LearnPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const session = await getSession();
-  const lesson = await prisma.lesson.findUnique({ where: { slug: params.slug } });
+  const lesson = await prisma.lesson.findUnique({ where: { slug } });
   if (!lesson) redirect('/');
   const progress = session
     ? await prisma.progress.upsert({

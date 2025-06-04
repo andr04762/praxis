@@ -41,7 +41,7 @@ export function AskAI() {
         <button
           disabled={loading}
           onClick={send}
-          className="bg-accent text-white px-3 ml-2"
+          className="bg-green-700 text-white px-3 ml-2"
         >
           Send
         </button>

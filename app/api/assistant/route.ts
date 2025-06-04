@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 export async function POST(req: Request) {
   const { messages } = await req.json();
   const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-  const stream = openai.chat.completions.create({
+  const stream = await openai.chat.completions.create({
     model: 'gpt-4o',
     messages,
     stream: true,

@@ -7,9 +7,10 @@ export default async function Home() {
     <div>
       <h1 className="text-2xl font-bold mb-4">Welcome to Prax</h1>
       <ul>
-        {lessons.map((l, i) => (
+        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+        {lessons.map((l: any, i: number) => (
           <li key={l.id} className="mb-2">
-            <Link href={`/learn/${l.slug}`} className="text-accent underline">
+            <Link href={`/learn/${l.slug}`} className="text-green-700 underline">
               {i + 1}. {l.title}
             </Link>
           </li>
