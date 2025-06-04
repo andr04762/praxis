@@ -12,4 +12,3 @@ npm run dev
 
 ## Deployment
 
-Deploy on Vercel. Post-install runs `prisma migrate dev` and seeds demo lessons.
