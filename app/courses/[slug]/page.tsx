@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { prisma } from '@/lib/prisma';
 import { redirect } from 'next/navigation';
 
-export default async function CoursePage({ params }: { params: { slug: string } }) {
-  const { slug } = params;
+export default async function CoursePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const course = await prisma.course.findUnique({
     where: { slug },
     include: { lessons: { orderBy: { createdAt: 'asc' } } },
