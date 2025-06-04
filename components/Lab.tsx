@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 
-interface LabTemplate {
+export interface LabTemplate {
   starter?: string;
   language?: string;
 }
