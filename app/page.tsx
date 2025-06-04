@@ -22,7 +22,7 @@ export default async function Home() {
             </Link>
           )
         ) : (
-          <Link href="/api/auth/signin" className="btn">
+          <Link href="/api/auth/signin?callbackUrl=/dashboard" className="btn">
             Sign in to start
           </Link>
         )}

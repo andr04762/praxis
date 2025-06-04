@@ -24,6 +24,9 @@ export const authOptions: NextAuthOptions = {
       session.user.subscribed = user.subscribed;
       return session;
     },
+    async redirect() {
+      return '/dashboard';
+    },
   },
 };
 
