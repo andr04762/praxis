@@ -21,19 +21,28 @@ export default async function DashboardPage() {
   const level = levelFromXp(totalXp);
 
   return (
-    <div>
-      <h1 className="text-xl font-bold mb-4">Welcome back{session.user.name ? `, ${session.user.name}` : ''}!</h1>
-      <p className="mb-4">XP: {totalXp} (Level {level})</p>
-      <h2 className="text-lg font-semibold mb-2">Courses</h2>
-      <ul className="space-y-2">
-        {courses.map((c) => (
-          <li key={c.id}>
-            <Link href={`/courses/${c.slug}`} className="text-green-700 underline">
-              {c.title}
-            </Link>
-          </li>
-        ))}
-      </ul>
+    <div className="flex">
+      <aside className="w-48 mr-6 shrink-0">
+        <nav>
+          <h2 className="font-semibold mb-2">Courses</h2>
+          <ul className="space-y-2">
+            {courses.map((c) => (
+              <li key={c.id}>
+                <Link href={`/courses/${c.slug}`} className="text-green-700 underline">
+                  {c.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          {courses.length === 0 && (
+            <p className="text-gray-500">No courses available yet.</p>
+          )}
+        </nav>
+      </aside>
+      <div className="flex-1">
+        <h1 className="text-xl font-bold mb-4">Welcome back{session.user.name ? `, ${session.user.name}` : ''}!</h1>
+        <p className="mb-4">XP: {totalXp} (Level {level})</p>
+      </div>
     </div>
   );
 }
