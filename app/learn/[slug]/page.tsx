@@ -21,9 +21,10 @@ export default async function LearnPage({ params }: { params: Promise<{ slug: st
     <div>
       <h1 className="text-xl font-bold mb-2">{lesson.title}</h1>
       <iframe className="w-full aspect-video mb-4" src={lesson.youtubeUrl} />
-      {!passed && (
+      {!passed && lesson.quiz && (
         <Quiz
-          questions={lesson.quiz.questions}
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          questions={(lesson.quiz as any).questions}
           onPass={async () => {
             'use server';
             if (!session) return;
