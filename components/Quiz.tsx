@@ -32,7 +32,7 @@ export function Quiz({ questions, onPass }: { questions: Question[]; onPass: () 
       ))}
       <button
         onClick={() => pass && onPass()}
-        className="bg-accent text-white px-4 py-2 rounded"
+        className="bg-green-700 text-white px-4 py-2 rounded"
         disabled={!pass}
       >
         {pass ? 'Continue' : 'Score 80% to pass'}

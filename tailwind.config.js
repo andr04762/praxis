@@ -7,9 +7,7 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors: {
-        accent: '#133f0f'
-      }
+      /* Custom colors can be defined here if needed */
     }
   },
   plugins: []

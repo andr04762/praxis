@@ -1,12 +1,8 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Link from 'next/link';
 import { getSession } from '@/lib/auth';
 import dict from '@/i18n/en.json';
-
-const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] });
-const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Prax',
@@ -17,7 +13,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const session = await getSession();
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className="antialiased">
         {process.env.NEXT_PUBLIC_GA_ID && (
           <script
             async
@@ -32,7 +28,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           />
         )}
         <header className="p-4 border-b flex justify-between">
-          <Link href="/" className="font-bold text-accent">Prax</Link>
+          <Link href="/" className="font-bold text-green-700">Prax</Link>
           <nav>
             {session ? (
               <Link href="/api/auth/signout" className="underline mr-2">{dict.signOut}</Link>

@@ -35,7 +35,7 @@ export function Lab({ template, onComplete }: { template: LabTemplate; onComplet
         value={code}
         onChange={(e) => setCode(e.target.value)}
       />
-      <button onClick={run} className="bg-accent text-white px-4 py-2 mt-2 rounded">Run</button>
+      <button onClick={run} className="bg-green-700 text-white px-4 py-2 mt-2 rounded">Run</button>
       {output && <pre className="mt-2 text-sm text-red-600">{output}</pre>}
     </div>
   );
