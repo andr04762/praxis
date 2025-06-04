@@ -1,7 +1,13 @@
 'use client';
 import { useState } from 'react';
 
-export function Quiz({ questions, onPass }: { questions: any[]; onPass: () => void }) {
+interface Question {
+  q: string;
+  choices: string[];
+  a: number;
+}
+
+export function Quiz({ questions, onPass }: { questions: Question[]; onPass: () => void }) {
   const [answers, setAnswers] = useState<number[]>([]);
   const score = answers.filter((a, idx) => questions[idx].a === a).length;
   const pass = score / questions.length >= 0.8;
