@@ -1,7 +1,7 @@
 import { prisma } from '@/lib/prisma';
 import { Quiz } from '@/components/Quiz';
 import { AskAI } from '@/components/AskAI';
-import { Lab } from '@/components/Lab';
+import { Lab, type LabTemplate } from '@/components/Lab';
 import { redirect } from 'next/navigation';
 import { getSession } from '@/lib/auth';
 export default async function LearnPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -38,7 +38,12 @@ export default async function LearnPage({ params }: { params: Promise<{ slug: st
       <div className="mt-4">
         <AskAI />
       </div>
-      {lesson.labTemplate && <Lab template={lesson.labTemplate} onComplete={() => {}} />}
+      {lesson.labTemplate && (
+        <Lab
+          template={lesson.labTemplate as unknown as LabTemplate}
+          onComplete={() => {}}
+        />
+      )}
     </div>
   );
 }
