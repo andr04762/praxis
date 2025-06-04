@@ -7,7 +7,7 @@ Freemium e-learning platform for healthcare data analytics.
 ```bash
 cp .env.example .env.local
 npm install
-npm run seed  # populate initial lessons
+npm run seed  # populate initial courses and lessons
 npm run dev
 ```
 

@@ -1,34 +1,46 @@
 import { prisma } from '../lib/prisma';
 
 async function main() {
-  const lessons = [
-    {
-      slug: 'intro-sql',
-      title: 'Intro to SQL',
-      youtubeUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-      quiz: { questions: [{ q: 'What does SQL stand for?', a: 0, choices: ['Structured Query Language', 'Simple Query Link'] }] },
-      xpReward: 100,
+  await prisma.course.upsert({
+    where: { slug: 'advanced-analytics-hc-sql-bq' },
+    update: {},
+    create: {
+      slug: 'advanced-analytics-hc-sql-bq',
+      title: 'Advanced Analytics in Healthcare SQL & BigQuery',
+      lessons: {
+        create: [
+          {
+            slug: 'module-1-what-is-sql',
+            title: 'Module 1 \u2013 What is SQL and Why Should I care',
+            youtubeUrl: 'https://youtu.be/3K8XMZuhg-8',
+            quiz: { questions: [] },
+            xpReward: 100,
+          },
+          {
+            slug: 'module-2-intro-healthcare-dataset',
+            title: 'Module 2 \u2013 Intro to a Healthcare Dataset',
+            youtubeUrl: 'https://youtu.be/bt3PVXmKxnw',
+            quiz: { questions: [] },
+            xpReward: 100,
+          },
+          {
+            slug: 'module-3-sql-statement-basics',
+            title: 'Module 3 \u2013 SQL Statement Basics Using Generative AI',
+            youtubeUrl: 'https://youtu.be/P9LMgEfUDsY',
+            quiz: { questions: [] },
+            xpReward: 100,
+          },
+        ],
+      },
     },
-    {
-      slug: 'joins',
-      title: 'SQL Joins',
-      youtubeUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-      quiz: { questions: [{ q: 'Which join returns all rows?', a: 2, choices: ['INNER', 'LEFT', 'FULL'] }] },
-      xpReward: 150,
-    },
-    {
-      slug: 'agg',
-      title: 'Aggregations',
-      youtubeUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-      quiz: { questions: [{ q: 'COUNT(*) returns?', a: 0, choices: ['number of rows', 'sum'] }] },
-      xpReward: 200,
-    },
-  ];
-  for (const l of lessons) {
-    await prisma.lesson.upsert({ where: { slug: l.slug }, update: {}, create: l });
-  }
+  });
+
   if (process.env.ADMIN_EMAIL) {
-    await prisma.user.upsert({ where: { email: process.env.ADMIN_EMAIL }, update: { role: 'admin' }, create: { email: process.env.ADMIN_EMAIL, role: 'admin' } });
+    await prisma.user.upsert({
+      where: { email: process.env.ADMIN_EMAIL },
+      update: { role: 'admin' },
+      create: { email: process.env.ADMIN_EMAIL, role: 'admin' },
+    });
   }
 }
 
