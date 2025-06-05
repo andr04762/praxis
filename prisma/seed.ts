@@ -13,6 +13,19 @@ async function main() {
             slug: 'module-1-what-is-sql',
             title: 'Module 1 \u2013 What is SQL and Why Should I care',
             youtubeUrl: 'https://youtu.be/3K8XMZuhg-8',
+            description: `Unlock the Power of SQL & BigQuery in Healthcare Analytics — Module 1
+
+What is the world is SQL and why should I care!
+
+Ready to move beyond spreadsheets and front-end exports? In this kickoff module of our Advanced Analytics in Healthcare series, we break down what SQL is, why it matters, and how Google BigQuery turns raw EHR, claims, lab, and wearable data into lightning-fast insights.
+
+What you'll learn
+- Why SQL is still the analyst's "Swiss-army knife" for direct, stable access to enterprise data
+- BigQuery essentials—serverless scale, real-time speed, and zero-ops management
+
+Who this is for
+- Hospital and payer analysts, informatics teams, data stewards, and anyone ready to level-up from basic dashboards to enterprise-grade analytics.
+`,
             quiz: {
               questions: [
                 {
@@ -38,6 +51,7 @@ async function main() {
             slug: 'module-2-intro-healthcare-dataset',
             title: 'Module 2 \u2013 Intro to a Healthcare Dataset',
             youtubeUrl: 'https://youtu.be/bt3PVXmKxnw',
+            description: `Welcome to Module 2 — Intro to a Healthcare Dataset. We'll explore a realistic, de-identified hospital database in BigQuery and cover data foundations, the patient journey, six core tables, and best practices for querying hospital data at scale.`,
             quiz: {
               questions: [
                 {
@@ -62,6 +76,7 @@ async function main() {
             slug: 'module-3-sql-statement-basics',
             title: 'Module 3 \u2013 SQL Statement Basics Using Generative AI',
             youtubeUrl: 'https://youtu.be/P9LMgEfUDsY',
+            description: `Module 3 breaks down the SELECT, FROM, JOIN, and WHERE clauses using BigQuery and Generative AI. See real-world examples with hospital data and learn prompt engineering techniques to boost your analytics workflow.`,
             quiz: {
               questions: [
                 {
