@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import { prisma } from '@/lib/prisma';
-import { getSession } from '@/lib/auth';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth';
 
 export default async function Home() {
-  const session = await getSession();
+  const session = await getServerSession(authOptions);
   const courses = await prisma.course.findMany({
     orderBy: { createdAt: 'asc' },
     include: { lessons: { orderBy: { createdAt: 'asc' } } },

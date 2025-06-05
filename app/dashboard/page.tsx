@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { prisma } from '@/lib/prisma';
-import { getSession } from '@/lib/auth';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth';
 import { redirect } from 'next/navigation';
 import { levelFromXp } from '@/lib/level';
 
 export default async function DashboardPage() {
-  const session = await getSession();
+  const session = await getServerSession(authOptions);
   if (!session) redirect('/api/auth/signin');
 
   const [progress, courses] = await Promise.all([

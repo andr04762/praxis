@@ -3,10 +3,12 @@ import { Quiz } from '@/components/Quiz';
 import { AskAI } from '@/components/AskAI';
 import { Lab, type LabTemplate } from '@/components/Lab';
 import { redirect } from 'next/navigation';
-import { getSession } from '@/lib/auth';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth';
+
 export default async function LearnPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const session = await getSession();
+  const session = await getServerSession(authOptions);
   const lesson = await prisma.lesson.findUnique({ where: { slug } });
   if (!lesson) redirect('/');
   const progress = session

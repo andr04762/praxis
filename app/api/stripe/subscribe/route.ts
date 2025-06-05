@@ -1,12 +1,13 @@
 import Stripe from 'stripe';
 import { NextResponse } from 'next/server';
-import { getSession } from '@/lib/auth';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: '2023-10-16' });
 
 export async function GET() {
-  const session = await getSession();
+  const session = await getServerSession(authOptions);
   if (!session) return NextResponse.redirect('/api/auth/signin');
   const checkout = await stripe.checkout.sessions.create({
     mode: 'subscription',

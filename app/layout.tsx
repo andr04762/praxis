@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import Link from 'next/link';
-import { getSession } from '@/lib/auth';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth';
 import dict from '@/i18n/en.json';
 
 export const metadata: Metadata = {
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const session = await getSession();
+  const session = await getServerSession(authOptions);
   return (
     <html lang="en">
       <body className="antialiased">
