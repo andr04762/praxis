@@ -12,7 +12,7 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
   return (
     <div>
       <h1 className="text-xl font-bold mb-4">{course.title}</h1>
-      <ul className="space-y-2 list-decimal list-inside">
+      <ul className="space-y-2 list-decimal list-inside mb-4">
         {course.lessons.map((l, i) => (
           <li key={l.id}>
             <Link href={`/learn/${l.slug}`} className="text-green-700 underline">
@@ -21,6 +21,11 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
           </li>
         ))}
       </ul>
+      {course.lessons.length > 0 && (
+        <Link href={`/learn/${course.lessons[0].slug}`} className="btn">
+          Start Course
+        </Link>
+      )}
     </div>
   );
 }

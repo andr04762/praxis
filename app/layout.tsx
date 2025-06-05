@@ -30,8 +30,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <header className="p-4 border-b flex justify-between">
           <Link href="/" className="font-bold text-green-700">Prax</Link>
           <nav>
+            <Link href="/courses" className="underline mr-2">Courses</Link>
             {session ? (
-              <Link href="/api/auth/signout" className="underline mr-2">{dict.signOut}</Link>
+              <Link href="/api/auth/signout" className="underline">{dict.signOut}</Link>
             ) : (
               <Link href="/api/auth/signin" className="underline">{dict.signIn}</Link>
             )}
