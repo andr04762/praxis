@@ -61,6 +61,7 @@ model Lesson {
   slug        String   @unique
   title       String
   youtubeUrl  String
+  description String?
   quiz        Json
   labTemplate Json?
   xpReward    Int

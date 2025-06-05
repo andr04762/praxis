@@ -20,6 +20,9 @@ export default async function LearnPage({ params }: { params: Promise<{ slug: st
   return (
     <div>
       <h1 className="text-xl font-bold mb-2">{lesson.title}</h1>
+      {lesson.description && (
+        <p className="mb-4 whitespace-pre-line">{lesson.description}</p>
+      )}
       <iframe className="w-full aspect-video mb-4" src={lesson.youtubeUrl} />
       {!passed && lesson.quiz && (
         <Quiz
