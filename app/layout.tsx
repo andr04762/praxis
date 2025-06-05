@@ -13,8 +13,8 @@ export const metadata: Metadata = {
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const session = await getServerSession(authOptions);
   return (
-    <html lang="en">
-      <body className="antialiased">
+    <html lang="en" className="h-full">
+      <body className="min-h-full flex flex-col bg-gray-50">
         {process.env.NEXT_PUBLIC_GA_ID && (
           <script
             async
@@ -28,18 +28,44 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             }}
           />
         )}
-        <header className="p-4 border-b flex justify-between">
-          <Link href="/" className="font-bold text-green-700">Prax</Link>
-          <nav>
-            <Link href="/courses" className="underline mr-2">Courses</Link>
-            {session ? (
-              <Link href="/api/auth/signout" className="underline">{dict.signOut}</Link>
-            ) : (
-              <Link href="/api/auth/signin" className="underline">{dict.signIn}</Link>
-            )}
-          </nav>
+        <header className="bg-white shadow-sm">
+          <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+            <Link href="/" className="text-2xl font-bold text-green-700 hover:text-green-900 transition-colors">
+              Prax
+            </Link>
+            <nav className="flex items-center gap-6">
+              <Link href="/courses" className="text-gray-600 hover:text-gray-900 transition-colors">
+                Courses
+              </Link>
+              {session ? (
+                <>
+                  <Link href="/dashboard" className="text-gray-600 hover:text-gray-900 transition-colors">
+                    Dashboard
+                  </Link>
+                  <Link 
+                    href="/api/auth/signout" 
+                    className="bg-gray-100 px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-200 transition-colors"
+                  >
+                    {dict.signOut}
+                  </Link>
+                </>
+              ) : (
+                <Link 
+                  href="/api/auth/signin" 
+                  className="bg-green-700 text-white px-4 py-2 rounded-lg hover:bg-green-800 transition-colors"
+                >
+                  {dict.signIn}
+                </Link>
+              )}
+            </nav>
+          </div>
         </header>
-        <main className="p-4 max-w-3xl mx-auto">{children}</main>
+        <main className="flex-1 py-8">{children}</main>
+        <footer className="bg-gray-900 text-gray-400 py-12">
+          <div className="max-w-7xl mx-auto px-4">
+            <p className="text-center">© {new Date().getFullYear()} Prax. All rights reserved.</p>
+          </div>
+        </footer>
       </body>
     </html>
   );
